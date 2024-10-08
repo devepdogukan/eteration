@@ -1,0 +1,1 @@
+export const PRODUCT_PAGINATION_COUNT = 12

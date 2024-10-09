@@ -3,7 +3,7 @@ import Filters from './filters'
 
 const ListSection = () => {
   return (
-    <div className="w-sm mr-6 flex flex-col gap-5 sticky top-5 h-fit">
+    <div className="w-sm mr-6 flex flex-col gap-5 sticky top-5 h-fit max-lg:hidden">
       <Sort />
       <Filters />
     </div>

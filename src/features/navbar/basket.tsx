@@ -1,5 +1,6 @@
 import ContentBox from '@/components/content-box'
 import PriceFormat from '@/components/price-format'
+import { cn } from '@/lib/utils'
 import { useAppDispatch, useAppSelector } from '@/store'
 import { addBasket, decreaseBasket, selectProductState } from '@/store/reducers/product'
 import { MinusIcon, PlusIcon } from 'lucide-react'
@@ -13,11 +14,15 @@ const EmptyBasket = () => (
   </div>
 )
 
-const Basket = () => {
+const Basket = ({ disableHidden = false }: { disableHidden?: boolean }) => {
   const { basket, list } = useAppSelector(selectProductState)
   const dispatch = useAppDispatch()
+
   return (
-    <div className="sticky top-5 min-w-sm max-w-sm flex flex-col gap-8 ml-[30px] h-fit">
+    <div
+      className={cn('sticky top-5  w-full flex flex-col gap-0 h-fit', {
+        'max-lg:hidden min-w-sm max-w-sm  gap-8 ml-[30px]': !disableHidden
+      })}>
       {basket.length > 0 ? (
         <>
           <ContentBox classes={{ content: 'p-[10px]' }}>

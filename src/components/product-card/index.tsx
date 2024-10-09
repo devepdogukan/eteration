@@ -19,7 +19,12 @@ const ProductCard = ({ image, name, id, price }: Partial<Product>) => {
         <PriceFormat amount={price ?? 0} />
       </p>
       <p className="font-medium line-clamp-1">{name}</p>
-      <Button className="w-full" onClick={() => dispatch(addBasket({ id }))}>
+      <Button
+        className="w-full"
+        onClick={(e) => {
+          e.stopPropagation()
+          dispatch(addBasket({ id }))
+        }}>
         Add to Cart
       </Button>
     </div>
